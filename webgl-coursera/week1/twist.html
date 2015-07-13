@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>Twist Demo</title>
+
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec4 vPosition;
+
+void
+main()
+{
+    gl_Position = vPosition;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+
+void
+main()
+{
+    gl_FragColor = vec4( 1.0, 0.0, 0.0, 1.0 );
+}
+</script>
+
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="twist.js"></script>
+</head>
+
+<body>
+<canvas id="gl-canvas" width="512" height="512">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+
+<p>
+  For the textboxes, please make sure you push ENTER / Return
+  once you<br>
+  have entered in an appropriate number. Putting in
+  an undefined input will<br>
+  revert back to the previous valid number.
+</p>
+
+<table>
+
+<tr>
+  <td>Fill Triangles:</td>
+<td><input name="filltri" type="radio" value="yesFill" onClick="setFill(true)"> Yes</td>
+<td><input name="filltri" type="radio" value="noFill" onClick="setFill(false)" checked> No</td>
+</tr>
+
+  <td> Rotation Direction:</td>
+<td><input name="direction" type="radio" value="cw" onClick="setDirection(false)"> Clockwise</td>
+<td><input name="direction" type="radio" value="ccw" onClick="setDirection(true)" checked> Counter-clockwise</td>
+</tr>
+  <tr>
+    <td> Number of subdivisions levels (>= 0): </td>
+    <td> <input type="text" id="numsubdivide" value="2" onkeydown="setSubDivide(this)"></td>
+  </tr>
+  <tr>
+    <td>Rotation Angle - [0, 360): </td>
+    <td><input type="text" id="rotangle" value="10" onkeydown="setRotAngle(this)"></td>
+  </tr>
+  <tr>
+    <td>Scale Factor <i>d</i> (>= 0): </td>
+    <td><input type="text" id="scalefactor" value="1" onkeydown="setScaleFactor(this)"></td>
+  </tr>
+
+</table>
+</body>
+</html>
